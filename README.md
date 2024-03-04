@@ -12,6 +12,7 @@ This is the code for the paper "Resonance RoPE: Improving Context Length General
 The base class of Resonance RoPE:
 
 ```python
+from einops import repeat
 class ResonanceEmbedding(nn.Module):
     # The base class of the Resonance RoPE technique.
     def resonance_register(self):

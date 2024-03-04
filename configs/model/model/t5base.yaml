@@ -1,0 +1,15 @@
+_target_: src.models.components.CustomDecoderOnlyT5
+
+config:
+  _target_: src.models.components.model_config.get_hf_config
+  hf_template_config: t5-base
+  vocab_size: ${eval:'${data.modular} + 5'}
+
+tokenizer:
+  _target_: src.models.components.tokenizers.number_tokenizer.get_num_tokenizer
+  modular_num: ${data.modular}
+
+pe_original_length: ${data.seq_len_train}
+pe_extrapolated_length: ${eval:'${data.seq_len_val_test_multiplier} * ${data.seq_len_train}'}
+position_encoding_type: rope
+base: 10000

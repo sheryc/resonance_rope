@@ -1,0 +1,15 @@
+# @package _global_
+defaults:
+  - override /hydra/launcher: ray
+
+
+hydra:
+  mode: "MULTIRUN" # set hydra to multirun by default if this config is attached
+
+  launcher:
+    _target_: hydra_plugins.hydra_ray_launcher.ray_launcher.RayLauncher
+    ray:
+      init:
+        address: auto
+      remote:
+        num_gpus: 1

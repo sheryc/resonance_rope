@@ -1,0 +1,4 @@
+defaults:
+  - alg_default
+
+data_type: "semirecurrent"

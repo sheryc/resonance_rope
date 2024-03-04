@@ -1,0 +1,24 @@
+defaults:
+  - model: t5small
+  - generation_config: greedy
+
+_target_: src.models.decoder_module.AlgorithmicDecoderModule
+
+modular_num: ${data.modular}
+
+optimizer:
+  _target_: torch.optim.AdamW
+  _partial_: true
+  lr: 5e-5
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.OneCycleLR
+  _partial_: true
+  anneal_strategy: "cos"
+  max_lr: ${model.optimizer.lr}
+  pct_start: 0.2
+
+train_max_length: ${data.seq_len_train}
+val_test_max_length: ${eval:'${data.seq_len_val_test_multiplier} * ${data.seq_len_train}'}
+initial_token_count: ${eval:'${data.near_count} + ${data.far_count}'}
+acc_every: 32

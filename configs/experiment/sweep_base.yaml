@@ -1,0 +1,43 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /data: alg_recurrent
+  - override /model: algseq_decoder
+  - override /model/model: t5base
+  - override /callbacks: default
+  - override /trainer: gpu
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+#tags: [ ${ data.data_type }, ${ model.model.position_encoding_type }, ${ model.model.config.hf_template_config }, ${ data.modular }, "debug" ]
+
+seed: 42
+
+trainer:
+  min_epochs: 100
+  max_epochs: 100
+  check_val_every_n_epoch: 5
+  precision: 32
+
+model:
+  optimizer:
+    lr: 0.0002
+    weight_decay: 1
+  scheduler:
+    pct_start: 0.1
+  compile: false
+
+data:
+  modular: 11  # sweep this
+  train_batch_size: 128
+  val_batch_size: 1
+  test_batch_size: 1
+  train_size: 10000
+  val_size: 100
+  test_size: 100
+  seq_len_train: 64
+  seq_len_val_test_multiplier: 4

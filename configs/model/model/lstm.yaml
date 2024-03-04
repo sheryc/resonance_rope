@@ -1,0 +1,12 @@
+_target_: src.models.components.LSTMForCausalLM
+
+config:
+  _target_: src.models.components.model_config.LSTMConfig
+  embedding_dim: 768
+  hidden_dim: 768
+  n_layers: 3
+  bidirectional: false
+  classifier_dropout: 0
+  pad_index: ${eval:'${data.modular} + 1'}
+  vocab_size: ${eval:'${data.modular} + 5'}
+  num_labels: ${data.modular}

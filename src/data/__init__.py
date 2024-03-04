@@ -1,0 +1,2 @@
+from .algseq_datamodule import AlgorithmicSeqDataModule
+from .mnist_datamodule import MNISTDataModule

@@ -1,0 +1,38 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=example
+
+defaults:
+  - override /data: alg_recurrent
+  - override /model: algseq_decoder
+  - override /model/model: t5small
+  - override /callbacks: default
+  - override /trainer: gpu
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+tags: [ "rotary", "t5-small", "debug" ]
+
+seed: 12345
+
+trainer:
+  min_epochs: 50
+  max_epochs: 50
+  gradient_clip_val: 0.5
+
+model:
+  model:
+    position_encoding_type: "rotary"
+  optimizer:
+    lr: 0.0005
+  compile: true
+
+data:
+  train_batch_size: 64
+  val_batch_size: 1
+  test_batch_size: 1
+  train_size: 10000
+  val_size: 100
+  test_size: 100

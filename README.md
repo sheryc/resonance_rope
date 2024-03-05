@@ -1,7 +1,7 @@
 # Resonance RoPE and the PosGen Benchmark
 <div align="center">
 <a href="https://arxiv.org/abs/2403.00071"><img alt="arXiv Link" src="https://img.shields.io/badge/arXiv-2403.00071-blue"></a>
-<a href="https://github.com/ashleve/lightning-hydra-template"><img alt="Template" src="https://img.shields.io/badge/-Lightning--Hydra--Template-017F2F?style=flat&logo=github&labelColor=gray"></a><br>
+<a href="https://github.com/ashleve/lightning-hydra-template"><img alt="Template" src="https://img.shields.io/badge/-Lightning--Hydra--Template-017F2F?style=flat&logo=github&labelColor=gray"></a>
 <a href="https://huggingface.co/papers/2403.00071"><img alt="Huggingface Paper Page" src="https://huggingface.co/datasets/huggingface/badges/resolve/main/paper-page-sm.svg"></a><br>
 </div>
 
